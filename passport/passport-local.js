@@ -41,7 +41,7 @@ passport.use('local-signup', new LocalStrategy({
         // if no user with this email id in DB
         const newUser = new User();
         newUser.username = req.body.username;
-        newUser.password = req.body.password;
+        newUser.password = newUser.encryptPassword(req.body.password);
         
         // save newUser data in DB
         newUser.save((err) => {
