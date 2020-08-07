@@ -9,7 +9,7 @@ return {
       req.checkBody('email','Email  is required').notEmpty();
       req.checkBody('email','Email is invalid').isEmail();
       req.checkBody('password','Password is required').notEmpty();
-      req.checkBody('username','Password must be 5 characters long').isLength({min:5});
+      req.checkBody('password','Password must be 5 characters long').isLength({min:5});
 
       req.getValidationResult()
         .then((result)=>{
@@ -25,5 +25,26 @@ return {
             return next();
         })
     },
-}
+
+    LoginValidation:(req,res,next)=>{
+        req.checkBody('email','Email  is required').notEmpty();
+        req.checkBody('email','Email is invalid').isEmail();
+        req.checkBody('password','Password is required').notEmpty();
+        req.checkBody('password','Password must be 5 characters long').isLength({min:5});
+  
+        req.getValidationResult()
+          .then((result)=>{
+              const errors = result.array();
+              const messages =[];
+              errors.forEach((error) => {
+                  messages.push(error.msg);
+              });
+              req.flash('error',messages);
+              res.redirect('/');
+          })
+          .catch((err)=>{
+              return next();
+          })
+      },
+    }
 }

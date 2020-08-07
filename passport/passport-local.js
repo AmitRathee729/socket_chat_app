@@ -27,7 +27,7 @@ passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-}, (req, email, passport, done) => {
+}, (req, email, password, done) => {
     User.findOne({email}, (err, user)=> {
         // if err by internet connect or something else
         if(err) {
@@ -48,5 +48,30 @@ passport.use('local-signup', new LocalStrategy({
         newUser.save((err) => {
             done(null, newUser);
         });
+    });
+}));
+
+/**
+ * Passport for local login
+ */
+passport.use('local-login', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, (req, email, password, done) => {
+    User.findOne({'email': email}, (err, user)=> {
+        // if err by internet connect or something else
+        if(err) {
+            return done(err);
+        }
+        const messages = [];
+        // if user doesn't exist or password is wrong
+        if(!user || !user.validUserPassword(password)) {
+            messages.push('Email does not exist or password is Invalid');
+            return done(null, false, req.flash('error', messages));
+        } 
+        // if all conditions full fill
+        return done(null, user)
+     
     });
 }));

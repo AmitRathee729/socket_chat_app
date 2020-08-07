@@ -11,15 +11,29 @@ module.exports = function(_, passport, User){
             router.get('/signup', this.getSignUp);
             router.get('/home', this.homePage);
 
+            router.post('/', User.LoginValidation, this.postLogin);
             router.post('/signup', User.SignUpValidation, this.postSignUp);
         },
 
         indexPage: function(req, res) {
-            return res.render('index')
+            const errors = req.flash('error');      // 'error' same as in User.js file which is in helpers folder
+            return res.render('index', {title: 'Socket Chat APP | Login', messages: errors, hasErrors: errors.length > 0});
         },
+
+        /**
+         * local.login is taken from passport --> passport-local.js
+         */
+        postLogin: passport.authenticate('local-login', {
+            // if successfully login then redirect to home page
+            successRedirect: '/home',
+            // if login fails then redirect to again login page
+            failureRedirect: '/',
+            failureFlash: true
+        }),
+
         getSignUp: function(req, res){
             const errors = req.flash('error');      // 'error' same as in User.js file which is in helpers folder
-            return res.render('signup', {title: 'Socket Chat APP | Login', messages: errors, hasErrors: errors.length > 0});
+            return res.render('signup', {title: 'Socket Chat APP | SignUp', messages: errors, hasErrors: errors.length > 0});
         },
         /**
          * local.signup is taken from passport --> passport-local.js
