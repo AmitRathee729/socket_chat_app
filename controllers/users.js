@@ -1,7 +1,6 @@
 'use strick';
-const passport = require('passport');
 
-module.exports = function(_){
+module.exports = function(_, passport, User){
 
     return {
         SetRouting: function(router) {
@@ -12,14 +11,15 @@ module.exports = function(_){
             router.get('/signup', this.getSignUp);
             router.get('/home', this.homePage);
 
-            router.post('/signup', this.postSignUp);
+            router.post('/signup', User.SignUpValidation, this.postSignUp);
         },
 
         indexPage: function(req, res) {
             return res.render('index')
         },
         getSignUp: function(req, res){
-            return res.render('signup');
+            const errors = req.flash('error');      // 'error' same as in User.js file which is in helpers folder
+            return res.render('signup', {title: 'Socket Chat APP | Login', messages: errors, hasErrors: errors.length > 0});
         },
         /**
          * local.signup is taken from passport --> passport-local.js

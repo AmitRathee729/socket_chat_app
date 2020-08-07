@@ -9,10 +9,11 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
+const _ = require('lodash');
 
 const container = require('./container.');
 
-container.resolve(function(users) {
+container.resolve(function(users, _) {
 
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://localhost/SOCKET_CHAT_APP',  { useUnifiedTopology: true });
@@ -44,7 +45,7 @@ container.resolve(function(users) {
         app.set('view engine', 'ejs');
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({extended: true}));
-
+        app.use(validator());
         app.use(session({
             secret: 'thisisasecretkey',
             resave: true,
@@ -55,5 +56,7 @@ container.resolve(function(users) {
 
         app.use(passport.initialize());
         app.use(passport.session());
+
+        app.locals._ = _;       // _ become global varible, now it can be use anywhere in our project
     }
 });

@@ -12,6 +12,7 @@ const simpleDependecies = [
      * index 1 must be same as package name
      */
     ['_', 'lodash'],             //  const _ = require('lodash');
+    ['passport', 'passport'],
 ];
 
 /***
