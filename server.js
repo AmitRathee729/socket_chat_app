@@ -13,7 +13,7 @@ const _ = require('lodash');
 
 const container = require('./container.');
 
-container.resolve(function(users, _) {
+container.resolve(function(users, _, admin) {
 
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://localhost/SOCKET_CHAT_APP',  { useUnifiedTopology: true });
@@ -33,6 +33,7 @@ container.resolve(function(users, _) {
         const router = require('express-promise-router')();
         // passing all routers from users file in controllers folder
         users.SetRouting(router);
+        admin.SetRouting(router);
 
         app.use(router);
     }
