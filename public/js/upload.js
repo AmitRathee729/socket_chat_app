@@ -13,10 +13,10 @@ $(document).ready(function(){
 
             $.ajax({
                 url: '/uploadFile',
-                type: 'POSt',
+                type: 'POST',
                 data: formData,
                 processData: false,
-                contentData: false,
+                contentType: false,
                 success: function(){
                     uploadInput.val('');
                 }

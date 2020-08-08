@@ -13,6 +13,7 @@ const simpleDependecies = [
      */
     ['_', 'lodash'],             //  const _ = require('lodash');
     ['passport', 'passport'],
+    ['formidable', 'formidable'],
 ];
 
 /***

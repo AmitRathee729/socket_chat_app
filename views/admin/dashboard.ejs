@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 </head>
 <body>
-    <div class="container">
-        <form action="/dashboard" method="post">
-            <input type="text" name="club" placeholder="Club Name">
-            <input type="text" name="country" placeholder="Country">
+   <div class="container">
+       <form action="/dashboard" method="post">
+          <input type="text" name="club" placeholder="Club Name">
+          <input type="text" name="country" placeholder="Country">
+          
+          <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+          <input type="file" name="upload" id="upload-input" style="display:none">
+          
+         <button>add group</button>
+           
+       </form>
+   </div>
 
-            <button class="btn btn-lg upload-btn" type="button">Upload File</button>
-            <input type="file" name="upload" id="upload-input" style="display:">
-
-        </form>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="/public/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+<script src="/js/upload.js"></script>
 </body>
 </html>
