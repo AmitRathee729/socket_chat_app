@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/amitrathee987/socket_chat_app#readme",
   "dependencies": {
+    "aws-sdk": "^2.729.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -31,6 +32,8 @@
     "formidable": "^1.2.2",
     "lodash": "^4.17.19",
     "mongoose": "^5.9.27",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0"
