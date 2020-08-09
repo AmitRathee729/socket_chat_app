@@ -11,6 +11,13 @@ $(document).ready(function(){
         console.log('yeahh user connected')
     });
 
+    /**
+     * listen newMessage event which is emitted by server side
+     */
+    socket.on('newMessage', function(data){
+        console.log(data);
+    })
+
 
     /**
      * 
@@ -26,12 +33,5 @@ $(document).ready(function(){
         socket.emit('createMessage', {
             text: msg
         });
-
-        /**
-         * listen newMessage event which is emitted by server side
-         */
-        socket.on('newMessage', function(data){
-            console.log(data);
-        })
     })
 });
