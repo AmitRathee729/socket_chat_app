@@ -28,7 +28,6 @@ module.exports = function(async, Club, _){
             ], (err, results)=> {
                 const res1 = results[0];
                 const res2 = results[1];
-                console.log('filterd',res2);
                 
                 const dataChunk = [];
                 const chunkSize = 3;

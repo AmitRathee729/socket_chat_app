@@ -39,14 +39,16 @@
                                             FILTER
                                         </p>
                                         <hr/>
-                                        <select class="" name="country" id="country" >
+                                        <select class="form-control" name="country" id="country" >
                                             <option value="">Filter By Country</option>
-											<option>England</option>
-											<option>Germany</option>
-                                            <option>France</option>
-                                            <% _.forEach(country, function(value) { %>
+                                            <% _.forEach(country, function(value) {%>
                                                 <option value="<%= value._id %>"><%= value._id %></option>
                                             <% }) %>
+
+                                            <option value="value._id">
+
+                                            </option>
+
                                         </select>
                                         <div class="clearfix"></div>
                                         <button class="btn add-apply">Apply</button>
