@@ -6,17 +6,34 @@ module.exports = function(io){
         console.log('user connected');
 
         /**
+         * listen for join event 
+         */
+        socket.on('join', (params, callback) => {
+            // when user join -> use join method which is in socket and this will take room name in parameter
+            socket.join(params.room);
+
+            callback();
+        })
+
+        /**
          * listen createMessage event from client side
          */
-        socket.on('createMessage',(message) => {
+        socket.on('createMessage',(message, callback) => {
             console.log(message);
 
             /**
-             * send message to everyone including sender
+             * send message to everyone including sender --> io.emit()
+             * 
+             * io.to(where we want to emit).emit()  --> send message to a particular room
              */
-            io.emit('newMessage', {
-                text: message.text
-            })
+            io.to(message.room).emit('newMessage', {
+                text: message.text,
+                room: message.room
+            });
+            /**
+             * when user clicked on send then we get acknowledgement 
+             */
+            callback();   
         })
     })
 }

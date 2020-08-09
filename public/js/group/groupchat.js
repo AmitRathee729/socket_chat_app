@@ -5,10 +5,26 @@ $(document).ready(function(){
     var socket = io();
 
     /**
+     * roomName
+     */
+    var room = $('#groupName').val();
+
+    /**
      * listen for connect event which is emitted by backend
      */
     socket.on('connect', function(){
         console.log('yeahh user connected')
+
+        /**
+         * When user joined a room then emit join event
+         * params is object -> room name
+         */
+        var params = {
+            room : room
+        }
+        socket.emit('join', params, function(){
+            console.log('User has joined this channel')
+        })
     });
 
     /**
@@ -31,7 +47,12 @@ $(document).ready(function(){
          * emit (createMessage) event from client side, when user A send message 
          */
         socket.emit('createMessage', {
-            text: msg
+            text: msg,
+            room: room
+        }, 
+        // when send message is clicked then we get acknowledgement
+         function(){
+            $('#msg').val('');
         });
     })
 });
