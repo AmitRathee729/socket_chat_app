@@ -35,7 +35,14 @@ $(document).ready(function(){
      * listen newMessage event which is emitted by server side
      */
     socket.on('newMessage', function(data){
-        console.log(data);
+        var template = $('#message-template').html();
+        var message = Mustache.render(template, {
+            text: data.text,
+            sender: data.from,
+        })
+
+        $('#messages').append(message);
+
     })
 
 

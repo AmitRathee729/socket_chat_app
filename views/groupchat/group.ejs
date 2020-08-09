@@ -104,7 +104,7 @@
 
                             <div class="chat_area">
                                 <ul id="messages" class="list-unstyled">
-                                    <li class="left">
+                                    <!-- <li class="left">
                                         <span class="chat-imgl pull-left">
                                             <img src="http://placehold.it/300*300" class="img-circle" alt="">
                                         </span>
@@ -115,8 +115,24 @@
                                             <br>
                                             Message Body
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
+
+                                <script id="message-template" type="text/template">
+                                    <li class="left">
+                                        <span class="chat-imgl pull-left">
+                                            <img src="http://placehold.it/300*300" class="img-circle" alt="">
+                                        </span>
+                                        <div class="chat-body1">
+                                            <span class="chat-name">
+                                                {{ sender }}
+                                            </span>
+                                            <br>
+                                            {{ text }}
+                                        </div>
+                                    </li> 
+                                </script>
+
                             </div>
 
                             <div class="message_write">
@@ -201,6 +217,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/group/groupchat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.js"></script>
 </body>
 
 </html>
