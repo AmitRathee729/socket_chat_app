@@ -7,10 +7,16 @@ module.exports = function(io){
 
         /**
          * listen createMessage event from client side
-         *
          */
         socket.on('createMessage',(message) => {
             console.log(message);
+
+            /**
+             * send message to everyone including sender
+             */
+            io.emit('newMessage', {
+                text: message.text
+            })
         })
     })
 }

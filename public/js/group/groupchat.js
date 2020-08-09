@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 
     /**
-     * emit (createMessage) event from client side, when user A send message
+     * 
      */
     $('#message-form').on('submit', function(event){
         event.preventDefault();
@@ -21,10 +21,17 @@ $(document).ready(function(){
         var msg = $('#msg').val();
 
         /**
-         * In event, first 
+         * emit (createMessage) event from client side, when user A send message 
          */
         socket.emit('createMessage', {
             text: msg
         });
+
+        /**
+         * listen newMessage event which is emitted by server side
+         */
+        socket.on('newMessage', function(data){
+            console.log(data);
+        })
     })
 });
