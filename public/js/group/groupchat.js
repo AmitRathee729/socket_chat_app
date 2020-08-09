@@ -8,6 +8,10 @@ $(document).ready(function(){
      * roomName
      */
     var room = $('#groupName').val();
+    /**
+     * Sender name or fullName
+     */
+    var sender = $('#sender').val();
 
     /**
      * listen for connect event which is emitted by backend
@@ -48,7 +52,8 @@ $(document).ready(function(){
          */
         socket.emit('createMessage', {
             text: msg,
-            room: room
+            room: room,
+            sender: sender,
         }, 
         // when send message is clicked then we get acknowledgement
          function(){

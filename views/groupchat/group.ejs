@@ -109,6 +109,7 @@
                             <div class="message_write">
                               <form id="message-form" method="post">
                                   <input type="hidden" id="groupName" value="<%= groupName %>">
+                                  <input type="hidden" name="sender" id="sender" value="<%= user.username || user.fullname %>">
 
                                   <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
                                   <div class="clearfix"></div>
