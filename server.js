@@ -35,6 +35,12 @@ container.resolve(function(users, _, admin, home, group) {
             console.log('Listening on port 3030');
         });
         ConfigureExrepss(app);
+
+        /**
+         * we can use socket inside groupchat file which is inside the socket folder
+         */
+        require('./socket/groupchat')(io);
+
         /***
          * Setup router
          */
