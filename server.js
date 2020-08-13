@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const socketIO = require('socket.io');
+const {Users} = require('./helpers/UsersClass');
 const _ = require('lodash');
 
 const container = require('./container.');
@@ -37,9 +38,10 @@ container.resolve(function(users, _, admin, home, group) {
         ConfigureExrepss(app);
 
         /**
-         * we can use socket inside groupchat file which is inside the socket folder
+         * we can use socket.io inside groupchat file which is inside the socket folder
+         * to use Users method in groupchat
          */
-        require('./socket/groupchat')(io);
+        require('./socket/groupchat')(io, Users);
 
         /***
          * Setup router

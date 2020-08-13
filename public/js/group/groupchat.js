@@ -24,12 +24,20 @@ $(document).ready(function(){
          * params is object -> room name
          */
         var params = {
-            room : room
+            room : room,
+            name: sender,
         }
         socket.emit('join', params, function(){
             console.log('User has joined this channel')
         })
     });
+
+    /**
+     * listen for online user event, there we get online user list
+     */
+    socket.on('usersList', function(users){
+        console.log(users);
+    })
 
     /**
      * listen newMessage event which is emitted by server side
