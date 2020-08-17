@@ -47,5 +47,17 @@ module.exports = function(io, Users){
              */
             callback();   
         })
-    })
+
+        /**
+         * disconnect event when user is disconnect
+         */
+        socket.on('disconnect', () => {
+            var user = users.RemoveUser(socket.id);
+
+            if (user){
+            // by usersList event all users connected to this room,will listen for this event and also get online users of users
+            io.to(user.room).emit('usersList', users.GetUsersList(user.room));
+            }
+        })
+    });
 }

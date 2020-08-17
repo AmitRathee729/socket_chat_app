@@ -1,3 +1,5 @@
+//const user = require("../../../models/user");
+
 /**
  * Client side
  */
@@ -35,8 +37,14 @@ $(document).ready(function(){
     /**
      * listen for online user event, there we get online user list
      */
-    socket.on('usersList', function(users){
-        console.log(users);
+    socket.on('usersList', function(user){
+        var ol = $('<ol></ol>');
+        // to filer online user to show only one time
+        for(var i = 0; i< user.length; i++){
+            ol.append('<p>'+ user[i]+'</p>')
+        }
+        // whenever user join userList then this will be appended
+        $('#users').html(ol);
     })
 
     /**
