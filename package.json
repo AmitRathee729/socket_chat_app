@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/amitrathee987/socket_chat_app#readme",
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "aws-sdk": "^2.729.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
